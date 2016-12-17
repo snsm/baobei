@@ -9,10 +9,18 @@ use common\models\Status_notes;
 use yii;
 use yii\web\Controller;
 use common\models\Member;
+use dosamigos\qrcode\QrCode;
 
 class HomeController extends Controller{
     public $layout='home';
+
+    public function actionQrcode()
+    {
+        return QrCode::png('http://www.yii-china.com');    //调用二维码生成方法
+    }
+
     function actionIndex(){
+
             return $this->render('index');
     }
 

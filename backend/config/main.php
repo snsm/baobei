@@ -36,12 +36,12 @@ return [
             'errorAction' => 'admin/error',
         ],
 
-       /* 'urlManager' => [
+        'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
-        ],*/
+        ],
 
 
         'i18n' => [

@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+.fenye li{
+	float:left; 
+	font-family:Arial, Helvetica, sans-serif; 
+	margin-left:6px; 
+	display:inline; 
+	line-height:20px;
+}
+ 
+.fenye a{
+	display:block;
+	height:20px; 
+	min-width:20px; 
+	text-align:center; 
+	font-size:14px; 
+	border:1px solid #d6d6d6; 
+	float:left; 
+	margin-left:3px; 
+	padding:3px 5px;
+	line-height:20px;
+	text-decoration:none;
+	color:#666;
+}
+
+.fenye a:hover{
+	background:#FF4500;
+	border-color:#FF4500; 
+	color:#FFF;
+}

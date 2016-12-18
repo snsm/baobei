@@ -6,6 +6,7 @@ use yii;
 use yii\web\Controller;
 use backend\models\Admin;
 use yii\helpers\Url;
+use dosamigos\qrcode\QrCode;
 
 class AdminController extends Controller{
     public $layout=false;
@@ -86,6 +87,9 @@ class AdminController extends Controller{
         return  $this->render('mainleft',['menu1'=>$menu1,'menu2'=>$menu2]);
     }
 
+    function actionQrcodes(){
+        return QrCode::png(''.SITE_HOME_URL.'/home/role?token=21232f297a57a5a743894a0e4a801fc3');
+    }
     function actionMainright(){
         (new PerController())->Permission();
         return  $this->render('mainright');

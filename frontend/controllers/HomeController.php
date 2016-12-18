@@ -129,7 +129,7 @@ class HomeController extends Controller{
     }
 
     function actionQrcode(){
-        return QrCode::png('http://www.baobei.skip.pw/home/yqing?mid='.Yii::$app->session->get('Mid').'');
+        return QrCode::png(''.SITE_HOME_URL.'/home/yqing?mid='.Yii::$app->session->get('Mid').'');
     }
     function actionYqing(){
         $session=Yii::$app->session;
@@ -160,6 +160,29 @@ class HomeController extends Controller{
             return  $this->redirect(['/home/success']);
         }else{
             return $this->render('login');
+        }
+    }
+
+    function actionRole(){
+        $request = Yii::$app->request->get('token');
+        if($request=='21232f297a57a5a743894a0e4a801fc3'){
+            return $this->render('role');
+        }else{
+            return  $this->redirect(['/home/success']);
+        }
+    }
+    function actionRoles(){
+        $request = Yii::$app->request->post('token');
+        if($request=='21232f297a57a5a743894a0e4a801fc3'){
+            $username=Yii::$app->request->post('username');
+            $result = Member::updateAll(['role'=>1],['username'=>$username]);
+            if ($result){
+                return '<script> alert("验证成功！"); window.location.href="'.SITE_HOME_URL.'/home/success"; </script>';
+            }else{
+                return '<script> alert("验证失败！"); window.location.href="'.SITE_HOME_URL.'/home/success"; </script>';
+            }
+        }else{
+            return  $this->redirect(['/home/success']);
         }
     }
 

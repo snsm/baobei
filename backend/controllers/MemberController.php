@@ -1,5 +1,6 @@
 <?php
 namespace backend\controllers;
+use common\models\Customer;
 use yii;
 use common\models\Member;
 use yii\web\Controller;
@@ -23,6 +24,26 @@ class MemberController extends Controller{
         (new PerController())->Permission();
         $result=new Member();
         return $this->render('member_list',['model'=>$result->Database()['model'],'total'=>$result->Database()['total'],'page'=>$result->Database()['page']]);
+    }
+
+    function actionHehouren_list(){
+        (new PerController())->Permission();
+        $sql="SELECT * FROM ".Member::tableName()." ";
+        $member=Member::findBySql($sql)->asArray()->all();
+        $union_users[]='';
+        foreach ($member as $list){
+            $sq="SELECT * FROM ".Customer::tableName()." WHERE tuijian_id=".$list['mid']."";
+            $mem=Customer::findBySql($sq)->asArray()->all();
+                $union_users[]= [
+                    'user_id'=>$list['mid'],
+                    'user_mobile'=>$list['username'],
+                    'baobeiren'=>$list['baobeiren'],
+                    'count'=>count($mem),
+                ];
+        }
+
+        $union_user = array_filter($union_users);
+        return $this->render('hehouren_list',['model'=>$union_user]);
     }
 
     function actionMember_update(){

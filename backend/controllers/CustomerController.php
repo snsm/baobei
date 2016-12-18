@@ -22,6 +22,29 @@ class CustomerController extends Controller{
      return $this->render('customer_list',['model'=>$model,'total'=>$total,'page'=>$page,'member'=>$member]);
     }
 
+    function actionTuijian_list(){
+        (new PerController())->Permission();
+        $sql="SELECT * FROM ".Member::tableName()." ";
+        $member=Member::findBySql($sql)->asArray()->all();
+        $union_users[]='';
+        foreach ($member as $list){
+            $sq="SELECT * FROM ".Member::tableName()." WHERE role=".$list['mid']."";
+            $mem=Member::findBySql($sq)->asArray()->all();
+            foreach ($mem as $value){
+                $union_users[]= [
+                    'user_id'=>$value['mid'],
+                    'user_parent_baobeiren'=>$value['baobeiren'],
+                    'user_parent_mobile'=>$value['username'],
+
+                    'baobeiren'=>$list['baobeiren'],
+                ];
+            }
+        }
+        $union_user = array_filter($union_users);
+
+        return $this->render('tuijian_list',['model'=>$union_user]);
+    }
+
     function actionCustomer_cl(){
         (new PerController())->Permission();
         if(!Yii::$app->request->post('clusername')==0){

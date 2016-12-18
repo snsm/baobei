@@ -78,6 +78,7 @@ class AdminController extends Controller{
                 ['menu2_id' => 1, 'menul_id' => 1, 'menu_name' => '网站首页', 'target' => '_blank', 'url' => SITE_HOME_URL],
                 ['menu2_id' => 2, 'menul_id' => 2, 'menu_name' => '会员列表', 'target' => 'mainFrame', 'url' => Url::to(['member/member_list', 'page' => '1'])],
                 ['menu2_id' => 3, 'menul_id' => 3, 'menu_name' => '客户列表', 'target' => 'mainFrame', 'url' => Url::to(['customer/customer_list', 'page' => '1'])],
+                ['menu2_id' => 3, 'menul_id' => 3, 'menu_name' => '合伙人列表', 'target' => 'mainFrame', 'url' => Url::to(['customer/tuijian_list', 'page' => '1'])],
                 ['menu2_id' => 4, 'menul_id' => 4, 'menu_name' => '方案列表', 'target' => 'mainFrame', 'url' => Url::to(['scheme/index', 'page' => '1'])],
                 ['menu2_id' => 5, 'menul_id' => 4, 'menu_name' => '上传方案', 'target' => 'mainFrame', 'url' => Url::to(['scheme/upload'])],
                 ['menu2_id' => 6, 'menul_id' => 5, 'menu_name' => '常见问题', 'target' => 'mainFrame', 'url' => Url::to(['scheme/upload'])],

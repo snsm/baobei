@@ -12,7 +12,7 @@ use yii\helpers\Url;
 
 <body bgcolor="f8f8f8">
 <div class="r_content">
-    <div class="r_top_nav">合伙人列表</div>
+    <div class="r_top_nav">客户推荐列表-发展属于自己的下线</div>
     <div class="r_public_con">
         <table width="98%" border="0" cellpadding="5" cellspacing="0" align="center">
 
@@ -20,16 +20,16 @@ use yii\helpers\Url;
 
             <tr align="center">
                 <td>序号</td>
-                <td>合伙人</td>
-                <td>手机号</td>
-                <td>我的推荐人姓名</td>
+                <td>客户姓名</td>
+                <td>客户电话</td>
+                <td>推荐人姓名</td>
             </tr>
             <?php foreach ($model as $line){?>
             <tr align="center">
-                <td><?=$line['user_id']?></td>
-                <td><?=$line['user_parent_baobeiren']?></td>
-                <td><?=$line['user_parent_mobile']?></td>
-                <td><?=$line['user_id']==1? "超级管理员":$line['baobeiren'] ?></td>
+                <td><?=$line['customer_id']?></td>
+                <td><?=$line['customer_username']?></td>
+                <td><?=$line['customer_tel']?></td>
+                <td><font color="red"><?=$line['customer_username']?></font> 是 <?=$line['baobeiren'] ?> 推荐的</td>
             </tr>
             <?php } ?>
         </table>

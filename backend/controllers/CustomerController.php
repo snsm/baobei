@@ -28,13 +28,13 @@ class CustomerController extends Controller{
         $member=Member::findBySql($sql)->asArray()->all();
         $union_users[]='';
         foreach ($member as $list){
-            $sq="SELECT * FROM ".Member::tableName()." WHERE role=".$list['mid']."";
-            $mem=Member::findBySql($sq)->asArray()->all();
+            $sq="SELECT * FROM ".Customer::tableName()." WHERE tuijian_id=".$list['mid']."";
+            $mem=Customer::findBySql($sq)->asArray()->all();
             foreach ($mem as $value){
                 $union_users[]= [
-                    'user_id'=>$value['mid'],
-                    'user_parent_baobeiren'=>$value['baobeiren'],
-                    'user_parent_mobile'=>$value['username'],
+                    'customer_id'=>$value['cid'],
+                    'customer_username'=>$value['username'],
+                    'customer_tel'=>$value['tel'],
 
                     'baobeiren'=>$list['baobeiren'],
                 ];

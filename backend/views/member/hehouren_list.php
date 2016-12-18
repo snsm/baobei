@@ -26,12 +26,14 @@ use yii\helpers\Url;
             </tr>
 
             <?php foreach ($model as $line){?>
+            <?php if($line['role']==1){?>
                 <tr align="center">
                     <td><?=$line['user_id']?></td>
                     <td><?=$line['baobeiren']?> 名下有 <font color="red" size="4"><?=$line['count']?></font> 位 报备客户</td>
                     <td><?=$line['user_mobile']?></td>
                     <td><?=$line['user_id']==$line['user_id']? "超级管理员":$line['baobeiren'] ?></td>
                 </tr>
+            <?php } ?>
             <?php } ?>
 
         </table>

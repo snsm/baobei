@@ -38,6 +38,7 @@ class MemberController extends Controller{
                     'user_id'=>$list['mid'],
                     'user_mobile'=>$list['username'],
                     'baobeiren'=>$list['baobeiren'],
+                    'role'=>$list['role'],
                     'count'=>count($mem),
                 ];
         }

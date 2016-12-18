@@ -13,6 +13,13 @@ $this->title=Yii::t('power','wodexinxi');
             </tr>
             <!---->
             <tr><td colspan="2" style="border:none;margin-top:10px;"></td></tr>
+
+            <?php if ($model[0]['role']==1){?>
+            <tr align="center" height="40">
+                <td align="right" colspan="2"><button style="width: 150px; background-color:grey;" class="buttomh" onclick="javascript:window.location='<?=Url::to(['home/yqing','mid'=>$model[0]['mid']])?>'" >点击获取邀请码</button></td>
+            </tr>
+            <?php } ?>
+
             <tr align="center" height="40">
                 <td align="right"><?=Yii::t('power','baobeiren');?></td><td align="left"><?=$model[0]['baobeiren']?></td>
             </tr>

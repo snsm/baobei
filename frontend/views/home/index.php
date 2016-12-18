@@ -4,7 +4,7 @@ use yii\helpers\Url;
 $this->title=Yii::t('common','title');
 ?>
 <section>
-    <img src="<?= Url::to(['qrcode'])?>" />
+    <!--<img src="<?/*= Url::to(['qrcode'])*/?>" />-->
     <?php
     $baobeiren = Yii::$app->session->get('Baobeiren');
     if(isset($baobeiren)){

@@ -14,11 +14,6 @@ use dosamigos\qrcode\QrCode;
 class HomeController extends Controller{
     public $layout='home';
 
-    public function actionQrcode()
-    {
-        return QrCode::png('http://www.yii-china.com');    //调用二维码生成方法
-    }
-
     function actionIndex(){
 
             return $this->render('index');
@@ -128,6 +123,20 @@ class HomeController extends Controller{
         if(isset($sess)){
             $model=Member::find()->where(['username'=>$sess])->asArray()->all();
             return $this->render('info',['model'=>$model]);
+        }else{
+            return  $this->redirect(['/home/login']);
+        }
+    }
+
+    function actionQrcode(){
+        return QrCode::png('http://www.baobei.skip.pw/home/yqing?mid='.Yii::$app->session->get('Mid').'');
+    }
+    function actionYqing(){
+        $session=Yii::$app->session;
+        $sess=$session->get('MEMBER_User');
+        if(isset($sess)){
+            $session->set('Mid',Yii::$app->request->get('mid'));
+            return $this->render('qrcode');
         }else{
             return  $this->redirect(['/home/login']);
         }

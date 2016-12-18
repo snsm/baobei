@@ -29,6 +29,16 @@ class HomeController extends Controller{
         }
     }
 
+    function actionTuijian(){
+        $token = Yii::$app->request->get('token');
+        $mid = Yii::$app->request->get('mid');
+        if ($token=='e10adc3949ba59abbe56e057f20f883e'){
+            return $this->render('tuijian');
+        }else{
+            return  $this->redirect(['/home/login']);
+        }
+    }
+
     function actionCustomer_list(){
         $session=Yii::$app->session;
         $sess=$session->get('MEMBER_User');
@@ -129,7 +139,7 @@ class HomeController extends Controller{
     }
 
     function actionQrcode(){
-        return QrCode::png(''.SITE_HOME_URL.'/home/yqing?mid='.Yii::$app->session->get('Mid').'');
+        return QrCode::png(''.SITE_HOME_URL.'/home/tuijian?mid='.Yii::$app->session->get('Mid').'&token=21232f297a57a5a743894a0e4a801fc3');
     }
     function actionYqing(){
         $session=Yii::$app->session;

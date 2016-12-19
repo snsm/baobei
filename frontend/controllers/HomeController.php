@@ -32,7 +32,7 @@ class HomeController extends Controller{
     function actionTuijian(){
         $token = Yii::$app->request->get('token');
         $mid = Yii::$app->request->get('mid');
-        if ($token=='e10adc3949ba59abbe56e057f20f883e'){
+        if ($token=='21232f297a57a5a743894a0e4a801fc3'){
             return $this->render('tuijian');
         }else{
             return  $this->redirect(['/home/login']);
